@@ -76,3 +76,7 @@ See `LICENSE`
 
 There isn't anything on my Todo list but if there is a bug or security flaw, please open
 a pull request or contact me via email.
+
+## Security Audit
+
+This library is not audited and I make no guarantees about it's security (but it should be fairly safe)
