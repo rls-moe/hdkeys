@@ -18,6 +18,10 @@ func init() {
 	passhash = sha3.New512
 }
 
+// Use this to set the number of iterations on password derivation
+// Useful for when you don't have a powerful machine or use gopherjs
+var PasswordIterations = 150000
+
 // stretchpw takes about half a second on a modern CPU (Ryzen 7 1700X)
 func stretchpw(pw string, salt []byte, length int) ([]byte, error) {
 	if length < 8 {
@@ -25,7 +29,7 @@ func stretchpw(pw string, salt []byte, length int) ([]byte, error) {
 	} else if length > 1024 {
 		return nil, errors.New("Key overstretch")
 	}
-	return pbkdf2.Key([]byte(pw), salt, 150000, length, passhash), nil
+	return pbkdf2.Key([]byte(pw), salt, PasswordIterations, length, passhash), nil
 }
 
 // Stretch int will put the incoming value through a single iteration of the hasher algorithm
