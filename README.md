@@ -68,6 +68,15 @@ If you need to derive a finalized key, you can make a copy of the key and finali
 
 To check if a key is finalized you can use `IsFinal()`
 
+## Notes
+
+You may use the Serialization Funtions to retrieve a string of the underlying key that can restore a key as it is.
+
+The format is binary but encoded in base64, if you require a more compact form
+you can decode the base64 string (Keys aren't meant to be transmitted or stored so take the performancy penalty for it).
+
+The size is 73 bytes of data (64 bytes internal state plus 8 bytes depth plus 1 byte final marker)
+
 ## License
 
 See `LICENSE`
